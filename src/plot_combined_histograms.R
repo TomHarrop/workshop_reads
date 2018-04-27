@@ -10,12 +10,6 @@ library(ggplot2)
 hist_files <- snakemake@input[["lhist"]]
 log_file <- snakemake@log[["log"]]
 
-# dev
-# hist_files <- list.files("output/020_stats",
-#                          pattern = "hist.txt",
-#                          recursive = TRUE,
-#                          full.names = TRUE)
-
 ########
 # MAIN #
 ########

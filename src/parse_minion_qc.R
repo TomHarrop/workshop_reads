@@ -32,13 +32,6 @@ ParseMinionQCYaml <- function(x){
 yaml_files <- snakemake@input[["yaml"]]
 log_file <- snakemake@log[["log"]]
 
-# dev
-# qc_dir <- "output/010_minion-qc"
-# yaml_files <- list.files(path = qc_dir,
-#                          pattern = "summary.yaml",
-#                          recursive = TRUE,
-#                          full.names = TRUE)
-
 ########
 # MAIN #
 ########
