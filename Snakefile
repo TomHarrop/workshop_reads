@@ -42,12 +42,7 @@ rule target:
 rule plot_combined_hist:
     input:
         lhist = expand('output/020_stats/{sample}/{type}_hist.txt',
-                       sample=['sample_3',
-                               'sample_5',
-                               'sample_7',
-                               'sample_8',
-                               'sample_10',
-                               'blue_cod'],
+                       sample=sample_list,
                        type=['all', 'pass']),
     output:
         lh = 'output/020_stats/combined/hist.pdf',
