@@ -30,6 +30,19 @@ sample_list = ['sample_3',
                'sample_10',
                'blue_cod']
 
+compare_list = ['lambda_qc',
+                'mh_78',
+                'asw_11',
+                'asw_12b',
+                'asw_12a',
+                'asw_14',
+                'asw_31',
+                'asw_33',
+                'asw_34',
+                'bm_c',
+                'bm_wt',
+                'lug_8']
+
 #########
 # RULES #
 #########
@@ -37,12 +50,15 @@ sample_list = ['sample_3',
 rule target:
     input:
         'output/020_stats/combined/hist.pdf',
-        'output/010_minion-qc/combined/qc_stats.png'
+        'output/010_minion-qc/combined/qc_stats.png',
+        expand('output/020_stats/{sample}/{type}_hist.pdf',
+               sample=sorted(set(sample_list + compare_list)),
+               type=['all', 'pass'])
 
 rule plot_combined_hist:
     input:
         lhist = expand('output/020_stats/{sample}/{type}_hist.txt',
-                       sample=sample_list,
+                       sample=sorted(set(sample_list + compare_list)),
                        type=['all', 'pass']),
     output:
         lh = 'output/020_stats/combined/hist.pdf',
@@ -120,7 +136,7 @@ rule pass_stats:
 rule parse_qc:
     input:
         yaml = expand('output/010_minion-qc/{sample}/summary.yaml',
-                      sample=sample_list)
+                      sample=sorted(set(sample_list + compare_list)))
     output:
         parsed_data = 'output/010_minion-qc/combined/qc_data.Rds',
         gp = 'output/010_minion-qc/combined/qc_stats.pdf',

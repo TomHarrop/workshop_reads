@@ -10,6 +10,30 @@ library(ggplot2)
 hist_files <- snakemake@input[["lhist"]]
 log_file <- snakemake@log[["log"]]
 
+# dev
+hist_files <- c("output/020_stats/asw_11/all_hist.txt",
+                "output/020_stats/asw_11/pass_hist.txt",
+                "output/020_stats/asw_12a/all_hist.txt",
+                "output/020_stats/asw_12a/pass_hist.txt",
+                "output/020_stats/asw_12b/all_hist.txt",
+                "output/020_stats/asw_12b/pass_hist.txt",
+                "output/020_stats/blue_cod/all_hist.txt",
+                "output/020_stats/blue_cod/pass_hist.txt",
+                "output/020_stats/lambda_qc/all_hist.txt",
+                "output/020_stats/lambda_qc/pass_hist.txt",
+                "output/020_stats/mh_78/all_hist.txt",
+                "output/020_stats/mh_78/pass_hist.txt",
+                "output/020_stats/sample_10/all_hist.txt",
+                "output/020_stats/sample_10/pass_hist.txt",
+                "output/020_stats/sample_3/all_hist.txt",
+                "output/020_stats/sample_3/pass_hist.txt",
+                "output/020_stats/sample_5/all_hist.txt",
+                "output/020_stats/sample_5/pass_hist.txt",
+                "output/020_stats/sample_7/all_hist.txt",
+                "output/020_stats/sample_7/pass_hist.txt",
+                "output/020_stats/sample_8/all_hist.txt",
+                "output/020_stats/sample_8/pass_hist.txt")
+
 ########
 # MAIN #
 ########
@@ -29,7 +53,12 @@ hist_data[, c("sample_name", "type") := tstrsplit(filename, "\\|")]
 hist_data[, filename := NULL]
 
 # set sample orders
-sample_order <- c("blue_cod" = "Blue cod",
+sample_order <- c("lambda_qc" = "Lambda QC",
+                  "asw_11" = "ASW 11",
+                  "asw_12a" = "ASW 12a",
+                  "asw_12b" = "ASW 12b",
+                  "mh_78" = "M. hyp 7+8",
+                  "blue_cod" = "Blue cod",
                   "sample_3" = "Sample 3",
                   "sample_5" = "Sample 5",
                   "sample_7" = "Sample 7",

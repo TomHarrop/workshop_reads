@@ -48,7 +48,12 @@ yaml_list <- lapply(yaml_files, read_yaml)
 # convert to data table
 minion_qc_list <- lapply(yaml_list, ParseMinionQCYaml)
 plot_data_all <- rbindlist(minion_qc_list, idcol = "sample")
-sample_order <- c("blue_cod" = "Blue cod",
+sample_order <- c("lambda_qc" = "Lambda QC",
+                  "asw_11" = "ASW 11",
+                  "asw_12a" = "ASW 12a",
+                  "asw_12b" = "ASW 12b",
+                  "mh_78" = "M. hyp 7+8",
+                  "blue_cod" = "Blue cod",
                   "sample_3" = "Sample 3",
                   "sample_5" = "Sample 5",
                   "sample_7" = "Sample 7",

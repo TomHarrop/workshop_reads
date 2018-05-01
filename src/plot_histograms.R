@@ -48,9 +48,9 @@ lh <- ggplot(lhist_log4, aes(x = lbin, y = count)) +
     ylab("Count") + xlab("Read length") +
     geom_col()
 
-wlh <- ggplot(wlhist , aes(x = lbin, y = total_bases/1e3)) +
+wlh <- ggplot(wlhist , aes(x = lbin, y = total_bases/1e6)) +
     scale_x_continuous(labels = function(x) 4^x) +
-    ylab("Total kilobases") + xlab("Read length") +
+    ylab("Total megabases") + xlab("Read length") +
     geom_col()
 
 # write output
